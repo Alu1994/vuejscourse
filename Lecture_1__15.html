@@ -1,0 +1,67 @@
+@{
+    ViewData["Title"] = "Lecture 1 - 15 + exercise";
+}
+
+<div id="app">
+    <!-- Print Once an field -->
+    <h1 v-once>{{ title }}</h1>
+    <h1>{{ title }}</h1>
+
+    <!-- Call a function -->
+    <input type="text" v-on:input="sayHello">
+
+    <!-- Call a function through curly braces -->
+    <p>{{ sayHello() }} - <a v-bind:href="link" target="_blank">Google</a></p>
+    <hr />
+
+    <!-- print some html through vue.js -->
+    <p v-html="finishedLink"></p>
+</div>
+
+
+<div id="exercise">
+    <p>VueJS is pretty cool - {{ name + " - " + age }}</p>
+    <p>{{ age * 3 }}</p>
+    <p>{{ randomNumber() }}</p>
+    <div>
+        <img v-bind:src="imageLink" />
+    </div>
+    <div>
+        <input type="text" v-bind:value="name" v-bind:placeholder="name" />
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="~/js/main.js"></script>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        title: "Hello World!",
+        link: "http://google.com.br",
+        finishedLink: `<a href="https://google.com">Google</a>`
+    },
+    methods: {
+        sayHello(event) {
+            if (event != null)
+                this.title = event.target.value;
+            return this.title;
+        }
+    }
+});
+
+new Vue({
+    el: '#exercise',
+    data: {
+        name: 'Matheus',
+        age: 23,
+        imageLink: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzZRXsUhejoe8SuSif_oSkJcykne6pPnG1Y3Nqi6c-fdCc4eXsrw`
+    },
+    methods: {
+        randomNumber() {
+            return Math.random();
+        }
+    }
+});
+</script>
