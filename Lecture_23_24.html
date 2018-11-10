@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <button v-on:click="counter++">Increase</button>
+            <button v-on:click="counter--">Decrease</button>
+            <button v-on:click="secondCounter++">Increase</button>
+            <button v-on:click="secondCounter--">Decrease</button>
+            <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+            <p>Counter: {{ result() }} | {{ output }}</p>
+        </div>
+    </body>
+</html>
+
+<script>
+    new Vue({
+        el: '#app',     //  Conecta ao DOM    
+        data: {         //  Propriedades para guardar dados 
+            counter: 0,
+            secondCounter: 0
+        },
+        computed: {     //  Depende de alterações externas para ser executado
+            output: function() {
+                console.log('Computed');
+                return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'; 
+            }
+        },
+        watch: {        //  Executa códigos atráves de alterações
+            counter: function(value) {
+                var vm = this;
+                setTimeout(function() {
+                    vm.counter = 0;
+                }, 2000);
+            }
+        },
+        methods: {      //  Métodos da instancia Vue
+            result: function() {
+                console.log('Method');
+                return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
+            }
+        }
+    });
+</script>
