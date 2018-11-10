@@ -4,17 +4,22 @@
     </head>
     <body>
         <div id="app">
-            
+            <button @click="changeLink">Click to Change Link</button>
+            <a :href="link">Link</a>
         </div>
     </body>
 </html>
 
 <script>
     new Vue({
-        el: '#app',     //  Conecta ao DOM    
-        data: {         //  Propriedades para guardar dados 
-            counter: 0,
-            secondCounter: 0
+        el: '#app',     
+        data: {         
+            link: 'http://www.google.com.br'
+        },
+        methods: {
+            changeLink: function() {
+                this.link = "http://www.apple.com";
+            }
         }
     });
 </script>
