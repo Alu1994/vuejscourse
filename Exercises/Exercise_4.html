@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <style>
+            /*<!-- 1) -->*/
+            #effect {
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+            }
+            .highlight {
+                background-color: red;
+                width: 200px !important;
+                height: 200px !important;
+            }
+            .shrink {
+                background-color: gray;
+                width:50px !important;
+                height: 50px !important;
+            }
+           
+
+            .yellow {
+                color: yellow;
+                background-color: blue;
+                width:500px;
+            }
+            .purple {
+                background-color: purple;
+                height: 50px;
+            }
+
+
+            .green {
+                background-color: green;
+                width:500px;
+            }
+            .orange {
+                background-color: orange;
+                height: 50px;
+            }
+
+
+            .greenProgress {
+                background-color: green;
+                width:50px;
+                height:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="exercise">
+            <!-- 1) -->
+            <button @click="startEffect">Start Effect</button>
+            <div id="effect" :class="backcolor"></div>
+
+            <hr />
+            
+            <!-- 2) -->
+            <div :class="[purpleClass, yellowClass]">Olá</div>
+
+            <hr />
+            
+            <!-- 3) -->
+            <input v-model="classInformed">
+            <div :class="classInformed">Olá</div>
+            
+            <hr />
+            
+            <!-- 4) -->
+            <input v-model="classSet">
+            <input v-model="isSet">
+            <div :class="classSet">Olá</div>
+            
+            <hr />
+
+            <!-- 5) -->
+            <input v-model="color">
+            <div :style="styleInformed">Olá</div>
+            
+            <hr />
+            
+            <!-- 6) -->
+            <div>
+                <button @click="startProgressBar">Start Progress</button>
+                <div :style="styleProgress"></div>
+            </div>
+            
+            <hr />
+        </div>
+    </body>
+</html>
+
+<script>
+    new Vue({
+        el: '#exercise',
+        data: {
+            backcolor: 'highlight',
+            purpleClass: 'purple',
+            yellowClass: 'yellow',
+            classInformed: 'purple',
+
+            classSet: 'green',
+            isSet: true,
+
+            color: 'gray',
+            width: 100,
+            styleValue: 0,
+            styleProgress: {
+                backgroundColor: 'green',
+                height: '20px',
+                width: '0px'
+            },
+        },
+        methods: {
+            startEffect: function() {
+                var vm = this;
+                setInterval(function() {
+                    vm.backcolor = vm.backcolor == "shrink" ? "highlight" : "shrink";
+                }, 1000);
+                return ;
+            },
+            startProgressBar: function() {
+                var vm = this;
+                setInterval(function() {
+                    vm.styleValue = vm.styleValue == 500 ? 0 : (vm.styleValue + 10);
+                    vm.styleProgress.width = vm.styleValue + 'px';
+                }, 70);
+                return;
+            }
+        },
+        computed:{
+            styleInformed: function() {
+                return {
+                    backgroundColor: this.color
+                }
+            }
+        },
+        watch: {
+            isSet: function() {
+                if (this.isSet == "true"){
+                    this.classSet = "green";
+                }
+                else if(this.isSet == "false"){
+                    this.classSet = "orange";
+                }
+            }
+        }
+    });
+</script>
