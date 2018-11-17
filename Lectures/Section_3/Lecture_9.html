@@ -1,0 +1,32 @@
+<title>keeping track of elements using v-for</title>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="(ingredient, i) in ingredients" :key="ingredient">
+            <h1>{{ ingredient }}</h1>
+            <p>({{ i }})</p>
+        </li>
+    </ul>
+    <button @click="ingredients.push('spices')">Add New</button>
+    <hr>
+    <ul>
+        <li v-for="(person, index) in persons">
+            <p v-for="(value, key, propIndex) in person">{{ key }}: {{ value }} ({{ propIndex }}) ({{ index }})</p>
+        </li>
+    </ul>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            ingredients: ['meat', 'food', 'cookies'],
+            persons: [
+                {name:'Max', age: 27, color: 'red'},
+                {name:'Anna', age: 'unknown', color: 'blue'}
+            ]
+        }
+    });
+</script>

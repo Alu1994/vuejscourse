@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Exercise</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="exercise">
+            <div id="1)">
+                <h1>1)</h1>
+                <button @click="show = !show">Toggle</button>
+                <p v-show="show">v-show Buddy</p>
+                <p v-if="!show">v-if Buddy</p>
+            </div>
+            <hr>
+            <div id="2)">
+                <h1>2)</h1>
+                <ul>
+                    <li v-for="(game, index) in games">{{ index+1 }}) {{ game }}</li>
+                </ul>
+            </div>
+            <hr>
+            <div id="3)">
+                <h1>3)</h1>
+                <ul>
+                    <li v-for="person in people">
+                        <p v-for="(value, key, index) in person">{{ index + 1 }}) {{ key }}: {{ value }}</p>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div id="4)">
+                <h1>4)</h1>
+                <ul>
+                    <li v-for="test in tests">
+                        <p v-for="(value, key) in test">
+                            <span v-if="key != 'data'">
+                                {{ value }}
+                            </span>                            
+                            <template v-if="key == 'data' && value != null && value instanceof Array">
+                                <ul>
+                                    <li v-for="val in value">
+                                        {{ val }}
+                                    </li>
+                                </ul>
+                            </template>
+                            <template v-else-if="key == 'data' && value != null">
+                                <span>{{ value }}</span>
+                            </template>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    new Vue({
+        el: '#exercise',
+        data: {
+            show: true,
+            games: ['god of war', 'onimusha', 'prince of persia', 'DOOM'],
+            people: 
+            [
+                {name: 'Matthews', age: 24, nickname: 'Mat'},
+                {name: 'Viviam', age: 38, nickname: 'Vivi'},
+                {name: 'Henrique', age: 19, nickname: 'Lilo'},
+                {name: 'Luccas', age: 24, nickname: 'Yule'}
+            ],
+            tests: 
+            [
+                { desc: 'test1', data: [ 1.67, 1.33, 0.98, 2.21 ] },
+                { desc: 'test2', data: null },
+                { desc: 'test3', data: [ 1.67, 1.33, 0.98, 2.21 ] },
+                { desc: 'test4', data: null },
+                { desc: 'test5', data: 1.29 }
+            ]
+        }
+    });
+</script>

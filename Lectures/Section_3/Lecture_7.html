@@ -1,0 +1,31 @@
+<title>object v-for template (value, index) & value v-for</title>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<div id="app">
+    <ul>
+        <template v-for="(ingredient, i) in ingredients">
+            <h1>{{ ingredient }}</h1>
+            <p>({{ i }})</p>
+        </template>
+    </ul>
+    <hr>
+    <ul>
+        <li v-for="(person, index) in persons">
+            <p v-for="(value, key, propIndex) in person">{{ key }}: {{ value }} ({{ propIndex }}) ({{ index }})</p>
+        </li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            ingredients: ['meat', 'food', 'cookies'],
+            persons: [
+                {name:'Max', age: 27, color: 'red'},
+                {name:'Anna', age: 'unknown', color: 'blue'}
+            ]
+        }
+    });
+</script>
