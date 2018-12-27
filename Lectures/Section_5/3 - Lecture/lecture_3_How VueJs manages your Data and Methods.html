@@ -1,0 +1,18 @@
+<!-- How VueJs manages your Data and Methods -->
+<html>
+    <head>
+        <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app1">
+            <h1>{{ title }}</h1>
+            <button @click="show">Show Paragraph</button>
+            <p v-if="showParagraph">This is not always visible</p>
+        </div>
+        <div id="app2">
+            <h1>{{ title }}</h1>
+            <button @click="onChange">Change something in Vue 1</button>
+        </div>
+    </body>
+</html>
+<script src="app.js"></script>
