@@ -1,9 +1,10 @@
 <template>
     <div class="col-xs-12 col-sm-6">
         <ul class="list-group">
-            <nav v-for="server in servers">
-                <app-server-items :item="server" :serverChangeFn="serverwaschanged"></app-server-items>
-            </nav>
+            <app-server-items 
+                v-for="server in servers" 
+                    :item="server" :serverChangeFn="serverwaschanged">
+            </app-server-items>
         </ul>
     </div>
 </template>
