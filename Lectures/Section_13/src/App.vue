@@ -5,6 +5,7 @@
                 <h1>Filters & Mixins</h1>
                 <p>{{ text | to-uppercase | to-lowercase }}</p>
                 <hr>
+                <button @click="fruits.push('Berries')">Add New Item</button>
                 <input v-model="filterText" />
                 <ul>
                     <li v-for="fruit in filteredFruits">
@@ -20,26 +21,18 @@
 
 <script>
     import List from './List.vue';
+    import { fruitMixin } from './FruitMixin.js'
 
     export default {
+        mixins: [fruitMixin],
         data() {
             return {
-                text: 'Hello there!',
-                fruits: ['Apple', 'Banana', 'Mango', 'Melon'],
-                filterText: ''
+                text: 'Hello there!'
             };
         },
         filters: {
             'to-uppercase'(value) {
                 return value.toUpperCase();
-            }
-        },
-        // A more performatic filter using computed properties
-        computed: {
-            filteredFruits() {
-                return this.fruits.filter((fruit) => {
-                    return fruit.match(this.filterText);
-                });
             }
         },
         components: {

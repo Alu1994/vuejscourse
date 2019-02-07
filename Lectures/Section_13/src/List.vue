@@ -11,20 +11,12 @@
 </template>
 
 <script>
+    import { fruitMixin } from './FruitMixin.js'
+
     export default {
-        data() {
-            return {
-                fruits: ['Apple', 'Banana', 'Mango', 'Melon'],
-                filterText: ''
-            };
-        },
-        // A more performatic filter using computed properties
-        computed: {
-            filteredFruits() {
-                return this.fruits.filter((fruit) => {
-                    return fruit.match(this.filterText);
-                });
-            }
+        mixins: [fruitMixin],
+        created() {
+            console.log('Inside List Created Hook');
         }
     }
 </script>
