@@ -5,10 +5,6 @@ Vue.filter('to-lowercase', function(value) {
     return value.toLowerCase();
 });
 
-Vue.filter('textCount', function(value) {
-    return value + ' (' + value.toString().length + ')';
-});
-
 Vue.mixin({
     created() {
         console.log('Global Mixin - Created Hook');
