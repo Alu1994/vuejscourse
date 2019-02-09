@@ -8,9 +8,12 @@
         <hr>
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            
+                <transition
+                    appear
+                    name="flip"
+                    mode="out-in">
                     <component :is="mode" @answered="answered($event)" @confirmed="mode = 'app-question'"></component>
-        
+                </transition>
             </div>
         </div>
     </div>
@@ -43,3 +46,42 @@
     }
 </script>
 
+<style>
+    .flip-enter {
+        transition: transform 1s;
+    }
+
+    .flip-enter-active {
+        animation: flip-in 1s ease-out forwards;
+        transition: opacity 1s;
+    }
+
+    .flip-leave {
+        transition: transform 1s;
+    }
+
+    .flip-leave-active {
+        animation: flip-out 1s ease-out forwards;
+        transition: opacity 1s;
+        opacity: 0;
+        position: relative;
+    }
+
+    @keyframes flip-in {
+        from {
+            transform: rotateY(90deg);
+        }
+        to {
+            transform: rotateY(0deg);
+        }
+    }
+
+    @keyframes flip-out {
+        from {
+            transform: rotateY(0deg);
+        }
+        to {
+            transform: rotateY(90deg);
+        }
+    }
+</style>
