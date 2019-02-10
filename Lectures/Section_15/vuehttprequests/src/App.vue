@@ -14,6 +14,8 @@
                 <input type="hidden" class="form-control" v-model="user.keyid">
                 <button class="btn btn-primary" @click="submit">Submit</button>
                 <hr>
+                <input type="text" class="form-control" v-model="node">
+                <br><br>
                 <button class="btn btn-primary" @click="fetchData">Get Data</button>
                 <br><br>
                 <ul class="list-group">
@@ -38,34 +40,60 @@
                     email: '',
                     keyid: ''
                 },
-                users: []
+                users: [],
+                resource: {},
+                node: 'data'
             };
         },
         methods: {
             submit() {
-                this.$http
-                    .post(data, this.user)
-                        .then((response) => {
-                            this.user.keyid = response.body.name;
-                        }, error => {
-                            console.log(error);
-                        });
+                // this.$http
+                //     .post(data, this.user)
+                //         .then((response) => {
+                //             this.user.keyid = response.body.name;
+                //         }, error => {
+                //             console.log(error);
+                //         });
+
+                //this.resource.save({}, this.user);
+
+                this.resource.saveAlt(this.user);
             },
             fetchData() {
-                this.$http
-                    .get(data)
-                        .then((response) => {
-                            return response.json();
-                        }, error => {
-                            console.log(error);
-                        })
-                        .then(result => {
-                            this.users = [];
-                            for(let key in result) {
-                                this.users.push(result[key]);
-                            }
-                        });
+                // this.$http
+                //     .get(data)
+                //         .then((response) => {
+                //             return response.json();
+                //         }, error => {
+                //             console.log(error);
+                //         })
+                //         .then(result => {
+                //             this.users = [];
+                //             for(let key in result) {
+                //                 this.users.push(result[key]);
+                //             }
+                //         });
+
+                this.resource.getData({node: this.node})
+                    .then((response) => {
+                        return response.json();
+                    }, error => {
+                        console.log(error);
+                    })
+                    .then(result => {
+                        this.users = [];
+                        for(let key in result) {
+                            this.users.push(result[key]);
+                        }
+                    });
             }
+        },
+        created() {
+            const customActions = {
+                saveAlt: {method: 'POST', url: 'alternative.json'},
+                getData: {method: 'GET'}
+            };
+            this.resource = this.$resource('{node}.json', {}, customActions);
         }
     }
 </script>
