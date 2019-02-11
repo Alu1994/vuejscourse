@@ -6,63 +6,63 @@
 - Getting Started
 
 ## Seção: 2
-- 21 / 29
+- 29 / 29
 - Using VueJS to Interact with the DOM
 
 ## Seção: 3
-- 14
+- 14/14
 - Using Conditionals and Rendering Lists
 
 ## Seção: 4
-- 16
+- 16/16
 - First Course Project - The Monster Slayer
 
 ## Seção: 5
-- 16
+- 16/16
 - Understanding the VueJS Instance
 
 ## Seção: 6
-- 12
+- 12/12
 - Moving to a "Real" Development Workflow with Webpack and Vue CLI
 
 ## Seção: 7
-- 14
+- 14/14
 - An Introduction to Components
 
 ## Seção: 8
-- 15
+- 15/15
 - Communicating between Components
 
 ## Seção: 9
-- 16
+- 16/16
 - Advanced Component Usage
 
 ## Seção: 10
-- 12
+- 12/12
 - Second Course Project - Wonderful Quotes
 
 ## Seção: 11
-- 14
+- 14/14
 - Handling User Input with Forms
 
 ## Seção: 12
-- 14
+- 14/14
 - Using and Creating Directives
 
 ## Seção: 13
-- 12
+- 12/12
 - Improving your App with Filters and Mixins
 
 ## Seção: 14
-- 28
+- 28/28
 - Adding Animations and Transitions
 
 ## Seção: 15
-- 15
+- 15/15
 - Connecting to Servers via Http - Using vue-resource
 
 ## Seção: 16
-- 28
+- 28/28
 - Routing in a VueJS Application
 
 ## Seção: 17
