@@ -1,18 +1,24 @@
 <template>
     <div>
-        <button class="btn btn-primary" @click="increment">Increment</button>
-        <button class="btn btn-primary" @click="decrement">Decrement</button>
+        <div>
+            <button class="btn btn-primary" @click="increment(100)">Increment</button>
+            <button class="btn btn-primary" @click="decrement(100)">Decrement</button>
+        </div>
+        <br>
     </div>
 </template>
 
 <script>
+    import { mapMutations } from 'vuex';
+
     export default {
         methods: {
-            increment() {
-                this.$emit('updated', 1);
-            },
-            decrement() {
-                this.$emit('updated', -1);
+            ...mapMutations([
+                'increment',
+                'decrement'
+            ]),
+            increment(by) {
+                this.$store.dispatch('increment', by);
             }
         }
     }
