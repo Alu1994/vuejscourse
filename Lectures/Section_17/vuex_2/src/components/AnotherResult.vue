@@ -6,13 +6,14 @@
         <!-- <p>Counter is: {{ doubleCounter }}</p>
         <p>Number of Clicks: {{ stringCounter }}</p> -->
         
-        <p>Counter is: {{ doubles }}</p>
-        <p>Number of Clicks: {{ strings }}</p>
+        <p>Counter is: {{ doubleCounter }}</p>
+        <p>Number of Clicks: {{ stringCounter }}</p>
     </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex';
+    import * as types from '../store/types.js';
 
     export default {
         //props: ['counter']
@@ -37,8 +38,8 @@
             // Please pull all the methods and objects inside "mapGetters"
             // and create separate key value pairs here
             ...mapGetters({
-                doubles: 'doubleCounter',
-                strings: 'stringCounter'
+                doubleCounter: types.DOUBLE_COUNTER,
+                stringCounter: types.CLICK_COUNTER
             })
         }
     }

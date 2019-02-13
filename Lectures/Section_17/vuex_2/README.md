@@ -28,3 +28,8 @@ npm install --save-dev babel-preset-stage-3
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+# namespaced modules:
+
+https://github.com/vuejs/vuex/releases/tag/v2.1.0

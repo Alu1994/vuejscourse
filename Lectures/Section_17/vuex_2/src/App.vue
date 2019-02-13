@@ -10,12 +10,23 @@
                 <!-- <app-counter @updated="counter += $event"></app-counter> -->
                 <app-counter></app-counter>
                 <app-another-counter></app-another-counter>
+                <hr>
+
+                <!-- Either this... -->
+                <input type="text" :value="value" @input="updateValue($event)" />
+                <br><br>
+                <!-- Or this -->
+                <input type="text" v-model="value" />
+                
+                <br><br>
+                <p>Value: {{ value }}</p>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
     import AnotherCounter from './components/AnotherCounter.vue';
     import Counter from './components/Counter.vue';
     import Result from './components/Result.vue';
@@ -27,6 +38,26 @@
         //         counter: 0
         //     }
         // },
+        computed: {
+            value: {
+                get() {
+                    return this.$store.getters.value;
+                },
+                set(value) {
+                    this.$store.dispatch('updateValue', value);
+                }
+            }
+        },
+        methods: {
+            // Either
+            updateValue(event) {
+                this.$store.dispatch('updateValue', event.target.value);
+            }
+            // OR ....
+            // ...mapActions([
+            //     'updateValue'
+            // ])
+        },
         components: {
             appCounter: Counter,
             appAnotherCounter: AnotherCounter,
