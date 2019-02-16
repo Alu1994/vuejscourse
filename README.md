@@ -66,27 +66,27 @@
 - Routing in a VueJS Application
 
 ## Seção: 17
-- 23
+- 23/23
 - Better State Management with Vuex
 
 ## Seção: 18
-- 26
+- 26/26
 - Final Project - The Stock Trader
 
 ## Seção: 19
-- 3
+- 3/3
 - Deploying a VueJS Application
 
 ## Seção: 20
-- 1
+- 1/1
 - Course Roundup
 
 ## Seção: 21
-- 27
+- 27/27
 - All Course Exercises ("Time to Practice")
 
 ## Seção: 22
-- 12
+- 7/12
 - Bonus: Using Axios instead of vue-resource
 
 ## Seção: 23
