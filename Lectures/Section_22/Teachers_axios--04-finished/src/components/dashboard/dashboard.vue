@@ -10,34 +10,29 @@
   import axios from 'axios';
 
   export default {
-    data() {
+    data () {
       return {
         email: ''
       }
     },
-    created() {
+    created () {
       axios.get('/users.json')
         .then(res => {
           console.log(res)
-          const data = res.data;
-          const users = [];
-
-          for(let key in data)
-          {
+          const data = res.data
+          const users = []
+          for (let key in data) {
             const user = data[key]
-            user.id = key;
-            users.push(user);
+            user.id = key
+            users.push(user)
           }
-
-          console.log(users);
-          this.email = users[0].email;
-
+          console.log(users)
+          this.email = users[0].email
         })
-        .catch(error => console.log('error: ' + error));
+        .catch(error => console.log(error))
     }
   }
 </script>
-
 
 <style scoped>
   h1, p {
